@@ -1,22 +1,35 @@
 package universidadgrupo8_vistas2;
+
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
+
 /**
  *
  * @author Gonz@_
  */
 public class Principal extends javax.swing.JFrame {
 
-       
+    private AlumnoPanel alumnoPanel;
+    private MateriaPanel materiaPanel;
+    private AdministracionPanel administracionPanel;
+    private ConsultasPanel consultasPanel;
+
     public Principal() {
-         initComponents();
-         setLocationRelativeTo(null);
-         jPanel_botones_principal.setVisible(true);
+        initComponents();
+        setLocationRelativeTo(null);
+        jPanel_botones_principal.setVisible(true);
         jD_desktop.setVisible(true);
-         
-         /*AlumnoPanel alumnoP = new AlumnoPanel();
+
+        // Inicializa los paneles
+        alumnoPanel = new AlumnoPanel(this);
+        materiaPanel = new MateriaPanel();
+        administracionPanel = new AdministracionPanel();
+        consultasPanel = new ConsultasPanel();
+        /*AlumnoPanel alumnoP = new AlumnoPanel();
          alumnoP.setSize(941, 500);
          alumnoP.setLocation(0, 0);
          jPanel_desktop.removeAll();
@@ -43,10 +56,8 @@ public class Principal extends javax.swing.JFrame {
          jPanel_desktop.removeAll();
          jPanel_desktop.add(consulltasPanel, BorderLayout.CENTER);
          administracionP.setVisible(false);*/
-         
-         
-        }
 
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -98,6 +109,11 @@ public class Principal extends javax.swing.JFrame {
         jButton_materia.setDefaultCapable(false);
         jButton_materia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton_materia.setIconTextGap(0);
+        jButton_materia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_materiaActionPerformed(evt);
+            }
+        });
 
         jButton_alumno.setBackground(new java.awt.Color(18, 29, 64));
         jButton_alumno.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
@@ -110,6 +126,11 @@ public class Principal extends javax.swing.JFrame {
         jButton_alumno.setDefaultCapable(false);
         jButton_alumno.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton_alumno.setIconTextGap(0);
+        jButton_alumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_alumnoActionPerformed(evt);
+            }
+        });
 
         jButton_consultas.setBackground(new java.awt.Color(18, 29, 64));
         jButton_consultas.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
@@ -122,6 +143,11 @@ public class Principal extends javax.swing.JFrame {
         jButton_consultas.setDefaultCapable(false);
         jButton_consultas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton_consultas.setIconTextGap(0);
+        jButton_consultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_consultasActionPerformed(evt);
+            }
+        });
 
         jButton_salir.setBackground(new java.awt.Color(18, 29, 64));
         jButton_salir.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
@@ -134,6 +160,11 @@ public class Principal extends javax.swing.JFrame {
         jButton_salir.setDefaultCapable(false);
         jButton_salir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton_salir.setIconTextGap(0);
+        jButton_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_salirActionPerformed(evt);
+            }
+        });
 
         jButton_administracion.setBackground(new java.awt.Color(18, 29, 64));
         jButton_administracion.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
@@ -146,6 +177,11 @@ public class Principal extends javax.swing.JFrame {
         jButton_administracion.setDefaultCapable(false);
         jButton_administracion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton_administracion.setIconTextGap(0);
+        jButton_administracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_administracionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel_botones_principalLayout = new javax.swing.GroupLayout(jPanel_botones_principal);
         jPanel_botones_principal.setLayout(jPanel_botones_principalLayout);
@@ -264,9 +300,68 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_formComponentResized
 
+    
+    private void jButton_alumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_alumnoActionPerformed
+         // remuev el  panel que hay en jPanel_desktop
+    jPanel_desktop.removeAll();
+        // agreg0 el panel  alumno al jPanel desktop
+    jPanel_desktop.add(alumnoPanel, BorderLayout.CENTER);
+    alumnoPanel.setVisible(true);
+         // revalida y repinta el jPanel desktop para que se muestre el nuevo panel
+    jPanel_desktop.revalidate();
+    jPanel_desktop.repaint();
+    }//GEN-LAST:event_jButton_alumnoActionPerformed
+
+    private void jButton_materiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_materiaActionPerformed
+         jPanel_desktop.removeAll();
+         jPanel_desktop.add(materiaPanel, BorderLayout.CENTER);
+        materiaPanel.setVisible(true);
+         jPanel_desktop.revalidate();
+         jPanel_desktop.repaint();
+    }//GEN-LAST:event_jButton_materiaActionPerformed
+
+    private void jButton_administracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_administracionActionPerformed
+         jPanel_desktop.removeAll();
+         jPanel_desktop.add(administracionPanel, BorderLayout.CENTER);
+        administracionPanel.setVisible(true);
+         jPanel_desktop.revalidate();
+         jPanel_desktop.repaint();
+    }//GEN-LAST:event_jButton_administracionActionPerformed
+
+    private void jButton_consultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_consultasActionPerformed
+         jPanel_desktop.removeAll();
+         jPanel_desktop.add(consultasPanel, BorderLayout.CENTER);
+        consultasPanel.setVisible(true);
+         jPanel_desktop.revalidate();
+         jPanel_desktop.repaint();
+    }//GEN-LAST:event_jButton_consultasActionPerformed
+
+    private void jButton_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_salirActionPerformed
+            int confirmacion = JOptionPane.showConfirmDialog(
+        this, "¿Seguro que deseas salir?", "Salida", JOptionPane.YES_NO_OPTION);
+
+    if (confirmacion == JOptionPane.YES_OPTION) {
+         jPanel_desktop.removeAll();
+        jPanel_desktop.add(jD_desktop, BorderLayout.CENTER);
+        jD_desktop.setVisible(true);
+        
+         this.dispose(); // cierra la ventana en la que estamos
+            //nos vemos en disny!
+         System.exit(0);
+    }
+    }//GEN-LAST:event_jButton_salirActionPerformed
+
+    public void volverAlEscritorio() {
+        jD_desktop.removeAll();
+       // jD_desktop.add(jPanel_desktop, BorderLayout.CENTER);
+         jD_desktop.setVisible(true);
+        //jD_desktop.revalidate();
+        jD_desktop.repaint();
+}
+
 
     public static void main(String args[]) {
-    
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -292,10 +387,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
     }
-    
-    
-    
- 
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButton_administracion;
