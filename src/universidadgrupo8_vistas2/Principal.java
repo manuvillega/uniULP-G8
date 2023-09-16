@@ -29,34 +29,7 @@ public class Principal extends javax.swing.JFrame {
         materiaPanel = new MateriaPanel();
         administracionPanel = new AdministracionPanel();
         consultasPanel = new ConsultasPanel();
-        /*AlumnoPanel alumnoP = new AlumnoPanel();
-         alumnoP.setSize(941, 500);
-         alumnoP.setLocation(0, 0);
-         jPanel_desktop.removeAll();
-         jPanel_desktop.add(alumnoP, BorderLayout.CENTER);
-         alumnoP.setVisible(false);
-         
-         MateriaPanel materaP = new MateriaPanel();
-         materaP.setSize(941, 500);
-         materaP.setLocation(0, 0);
-         jPanel_desktop.removeAll();
-         jPanel_desktop.add(materaP, BorderLayout.CENTER);
-         alumnoP.setVisible(false);
-         
-          AdministracionPanel administracionP = new AdministracionPanel();
-         administracionP.setSize(941, 500);
-         administracionP.setLocation(0, 0);
-         jPanel_desktop.removeAll();
-         jPanel_desktop.add(administracionP, BorderLayout.CENTER);
-         administracionP.setVisible(false);
-         
-         ConsultasPanel consulltasPanel = new ConsultasPanel();
-         consulltasPanel.setSize(941, 500);
-         consulltasPanel.setLocation(0, 0);
-         jPanel_desktop.removeAll();
-         jPanel_desktop.add(consulltasPanel, BorderLayout.CENTER);
-         administracionP.setVisible(false);*/
-
+      
     }
 
     @SuppressWarnings("unchecked")
