@@ -129,13 +129,9 @@
                           <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-<<<<<<< HEAD
                           <EmptySpace min="-2" pref="430" max="-2" attributes="0"/>
                           <Component id="jButton8" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="357" max="-2" attributes="0"/>
-=======
-                          
->>>>>>> ffaf0cd9965cd23330d9fb4ad811c25503f623d6
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -153,15 +149,9 @@
                           </Group>
                           <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" pref="214" max="-2" attributes="0"/>
-<<<<<<< HEAD
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jButton8" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace pref="47" max="32767" attributes="0"/>
-=======
-                          <EmptySpace pref="34" max="32767" attributes="0"/>
-                          <Component id="jButton8" min="-2" pref="40" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
->>>>>>> ffaf0cd9965cd23330d9fb4ad811c25503f623d6
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -237,15 +227,9 @@
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="3" rowCount="0">
-<<<<<<< HEAD
                             <Column editable="true" title="C&#xf3;digo" type="java.lang.Object"/>
                             <Column editable="true" title="Nombre" type="java.lang.Object"/>
                             <Column editable="true" title="Noota" type="java.lang.Object"/>
-=======
-                            <Column editable="true" title="ID" type="java.lang.Object"/>
-                            <Column editable="true" title="Nombre" type="java.lang.Object"/>
-                            <Column editable="true" title="A&#xf1;o" type="java.lang.Object"/>
->>>>>>> ffaf0cd9965cd23330d9fb4ad811c25503f623d6
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

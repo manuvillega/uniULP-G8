@@ -5,15 +5,12 @@
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="26" green="17" red="19" type="rgb"/>
     </Property>
-<<<<<<< HEAD
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[912, 500]"/>
     </Property>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[912, 500]"/>
     </Property>
-=======
->>>>>>> ffaf0cd9965cd23330d9fb4ad811c25503f623d6
   </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -124,7 +121,6 @@
                                           </Group>
                                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
                                               <Component id="txt_alumno_documento" alignment="1" pref="384" max="32767" attributes="0"/>
                                               <Component id="txt_alumno_nommbre" alignment="1" pref="384" max="32767" attributes="0"/>
                                               <Component id="check_alumno_estado" alignment="0" max="32767" attributes="0"/>
@@ -140,8 +136,6 @@
                                           <Component id="btn_alumno_eliminar" pref="152" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
                                           <Component id="btn_alumno_guardar" pref="151" max="32767" attributes="0"/>
-=======
-                                             
                                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -163,7 +157,6 @@
                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
-<<<<<<< HEAD
                                           <Component id="txt_alumno_documento" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                                           <Component id="jLabel3" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                       </Group>
@@ -172,21 +165,10 @@
                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="txt_alumno_apellido" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-=======
-                                          <Component id="jTextField1" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                                          <Component id="jLabel3" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="jButton_alumno_buscar" min="-2" pref="40" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jTextField2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
->>>>>>> ffaf0cd9965cd23330d9fb4ad811c25503f623d6
                                       <Component id="jLabel2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-<<<<<<< HEAD
                                       <Component id="txt_alumno_nommbre" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                                       <Component id="jLabel4" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                   </Group>
@@ -205,26 +187,6 @@
                               <Component id="btn_alumno_nuevo" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                               <Component id="btn_alumno_eliminar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                               <Component id="btn_alumno_guardar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-=======
-                                      <Component id="jTextField3" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                                      <Component id="jLabel4" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                  <Component id="jRadioButton1" min="-2" pref="40" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="jLabel5" min="-2" pref="40" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jDateChooser1" alignment="1" min="-2" pref="41" max="-2" attributes="0"/>
-                              <Component id="jLabel6" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="jButton2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="jButton3" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
->>>>>>> ffaf0cd9965cd23330d9fb4ad811c25503f623d6
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -303,55 +265,29 @@
                     </Property>
                   </Properties>
                 </Component>
-<<<<<<< HEAD
                 <Component class="javax.swing.JRadioButton" name="check_alumno_estado">
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="check_alumno_estadoActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_alumno_documento">
-=======
-                <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="jRadioButton1">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton1ActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jTextField1">
->>>>>>> ffaf0cd9965cd23330d9fb4ad811c25503f623d6
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-<<<<<<< HEAD
                 <Component class="javax.swing.JTextField" name="txt_alumno_apellido">
-=======
-                <Component class="javax.swing.JTextField" name="jTextField2">
->>>>>>> ffaf0cd9965cd23330d9fb4ad811c25503f623d6
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
-<<<<<<< HEAD
                 <Component class="javax.swing.JTextField" name="txt_alumno_nommbre">
-=======
-                <Component class="javax.swing.JTextField" name="jTextField3">
->>>>>>> ffaf0cd9965cd23330d9fb4ad811c25503f623d6
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator1">
                 </Component>
-<<<<<<< HEAD
                 <Component class="javax.swing.JButton" name="btn_alumno_nuevo">
-=======
-                <Component class="javax.swing.JButton" name="jButton1">
->>>>>>> ffaf0cd9965cd23330d9fb4ad811c25503f623d6
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="40" green="1d" red="12" type="rgb"/>
@@ -365,21 +301,14 @@
                     <Property name="text" type="java.lang.String" value="Nuevo"/>
                     <Property name="horizontalTextPosition" type="int" value="2"/>
                   </Properties>
-<<<<<<< HEAD
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_alumno_nuevoActionPerformed"/>
                   </Events>
-=======
->>>>>>> ffaf0cd9965cd23330d9fb4ad811c25503f623d6
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
-<<<<<<< HEAD
                 <Component class="javax.swing.JButton" name="btn_alumno_eliminar">
-=======
-                <Component class="javax.swing.JButton" name="jButton2">
->>>>>>> ffaf0cd9965cd23330d9fb4ad811c25503f623d6
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="40" green="1d" red="12" type="rgb"/>
@@ -393,21 +322,14 @@
                     <Property name="text" type="java.lang.String" value="Eliminar"/>
                     <Property name="horizontalTextPosition" type="int" value="2"/>
                   </Properties>
-<<<<<<< HEAD
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_alumno_eliminarActionPerformed"/>
                   </Events>
-=======
->>>>>>> ffaf0cd9965cd23330d9fb4ad811c25503f623d6
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
-<<<<<<< HEAD
                 <Component class="javax.swing.JButton" name="btn_alumno_guardar">
-=======
-                <Component class="javax.swing.JButton" name="jButton3">
->>>>>>> ffaf0cd9965cd23330d9fb4ad811c25503f623d6
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="40" green="1d" red="12" type="rgb"/>
@@ -421,21 +343,14 @@
                     <Property name="text" type="java.lang.String" value="Guardar"/>
                     <Property name="horizontalTextPosition" type="int" value="2"/>
                   </Properties>
-<<<<<<< HEAD
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_alumno_guardarActionPerformed"/>
                   </Events>
-=======
->>>>>>> ffaf0cd9965cd23330d9fb4ad811c25503f623d6
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
-<<<<<<< HEAD
                 <Component class="javax.swing.JButton" name="btn_alumno_buscar">
-=======
-                <Component class="javax.swing.JButton" name="jButton_alumno_buscar">
->>>>>>> ffaf0cd9965cd23330d9fb4ad811c25503f623d6
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="40" green="1d" red="12" type="rgb"/>
@@ -452,21 +367,15 @@
                     <Property name="text" type="java.lang.String" value="Buscar "/>
                     <Property name="horizontalTextPosition" type="int" value="2"/>
                   </Properties>
-<<<<<<< HEAD
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_alumno_buscarActionPerformed"/>
                   </Events>
-=======
->>>>>>> ffaf0cd9965cd23330d9fb4ad811c25503f623d6
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
-<<<<<<< HEAD
                 <Component class="com.toedter.calendar.JDateChooser" name="calendario_alumno_fechaNacim">
                 </Component>
-=======
->>>>>>> ffaf0cd9965cd23330d9fb4ad811c25503f623d6
               </SubComponents>
             </Container>
           </SubComponents>
