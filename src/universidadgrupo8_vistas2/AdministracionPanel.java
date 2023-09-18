@@ -83,7 +83,7 @@ public class AdministracionPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Nombre", "Año"
+                "Código", "Nombre", "Noota"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
