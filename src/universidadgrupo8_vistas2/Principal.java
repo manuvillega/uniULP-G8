@@ -1,11 +1,14 @@
 package universidadgrupo8_vistas2;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JDesktopPane;
+import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
-
+import javax.swing.JPanel;
 
 /**
  *
@@ -17,8 +20,8 @@ public class Principal extends javax.swing.JFrame {
     private MateriaPanel materiaPanel;
     private AdministracionPanel administracionPanel;
     private ConsultasPanel consultasPanel;
-
-    public Principal() {
+    
+        public Principal() {
         initComponents();
         setLocationRelativeTo(null);
         jPanel_botones_principal.setVisible(true);
@@ -29,7 +32,7 @@ public class Principal extends javax.swing.JFrame {
         materiaPanel = new MateriaPanel();
         administracionPanel = new AdministracionPanel();
         consultasPanel = new ConsultasPanel();
-      
+
     }
 
     @SuppressWarnings("unchecked")
@@ -71,6 +74,11 @@ public class Principal extends javax.swing.JFrame {
         jPanel_botones_principal.setMinimumSize(new java.awt.Dimension(0, 0));
 
         jLabel1_logo_ulp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo8/vistas/img/logo-ulp.png"))); // NOI18N
+        jLabel1_logo_ulp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1_logo_ulpMouseClicked(evt);
+            }
+        });
 
         jButton_materia.setBackground(new java.awt.Color(18, 29, 64));
         jButton_materia.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
@@ -274,66 +282,96 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_formComponentResized
 
-    
+
     private void jButton_alumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_alumnoActionPerformed
-         // remuev el  panel que hay en jPanel_desktop
-    jPanel_desktop.removeAll();
+        // remuev el  panel que hay en jPanel_desktop
+        jPanel_desktop.removeAll();
         // agreg0 el panel  alumno al jPanel desktop
-    jPanel_desktop.add(alumnoPanel, BorderLayout.CENTER);
-    alumnoPanel.setVisible(true);
-         // revalida y repinta el jPanel desktop para que se muestre el nuevo panel
-    jPanel_desktop.revalidate();
-    jPanel_desktop.repaint();
+        jPanel_desktop.add(alumnoPanel, BorderLayout.CENTER);
+        alumnoPanel.setVisible(true);
+        // revalida y repinta el jPanel desktop para que se muestre el nuevo panel
+        jPanel_desktop.revalidate();
+        jPanel_desktop.repaint();
     }//GEN-LAST:event_jButton_alumnoActionPerformed
 
     private void jButton_materiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_materiaActionPerformed
-         jPanel_desktop.removeAll();
-         jPanel_desktop.add(materiaPanel, BorderLayout.CENTER);
+        jPanel_desktop.removeAll();
+        jPanel_desktop.add(materiaPanel, BorderLayout.CENTER);
         materiaPanel.setVisible(true);
-         jPanel_desktop.revalidate();
-         jPanel_desktop.repaint();
+        jPanel_desktop.revalidate();
+        jPanel_desktop.repaint();
     }//GEN-LAST:event_jButton_materiaActionPerformed
 
     private void jButton_administracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_administracionActionPerformed
-         jPanel_desktop.removeAll();
-         jPanel_desktop.add(administracionPanel, BorderLayout.CENTER);
+        jPanel_desktop.removeAll();
+        jPanel_desktop.add(administracionPanel, BorderLayout.CENTER);
         administracionPanel.setVisible(true);
-         jPanel_desktop.revalidate();
-         jPanel_desktop.repaint();
+        jPanel_desktop.revalidate();
+        jPanel_desktop.repaint();
     }//GEN-LAST:event_jButton_administracionActionPerformed
 
     private void jButton_consultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_consultasActionPerformed
-         jPanel_desktop.removeAll();
-         jPanel_desktop.add(consultasPanel, BorderLayout.CENTER);
+        jPanel_desktop.removeAll();
+        jPanel_desktop.add(consultasPanel, BorderLayout.CENTER);
         consultasPanel.setVisible(true);
-         jPanel_desktop.revalidate();
-         jPanel_desktop.repaint();
+        jPanel_desktop.revalidate();
+        jPanel_desktop.repaint();
     }//GEN-LAST:event_jButton_consultasActionPerformed
 
     private void jButton_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_salirActionPerformed
-            int confirmacion = JOptionPane.showConfirmDialog(
-        this, "¿Seguro que deseas salir?", "Salida", JOptionPane.YES_NO_OPTION);
+        int confirmacion = JOptionPane.showConfirmDialog(
+                this, "¿Seguro que deseas salir?", "Salida", JOptionPane.YES_NO_OPTION);
 
-    if (confirmacion == JOptionPane.YES_OPTION) {
-         jPanel_desktop.removeAll();
-        jPanel_desktop.add(jD_desktop, BorderLayout.CENTER);
-        jD_desktop.setVisible(true);
-        
-         this.dispose(); // cierra la ventana en la que estamos
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            jPanel_desktop.removeAll();
+            jPanel_desktop.add(jD_desktop, BorderLayout.CENTER);
+            jD_desktop.setVisible(true);
+
+            this.dispose(); // cierra la ventana en la que estamos
             //nos vemos en disny!
-         System.exit(0);
-    }
+            System.exit(0);
+        }
     }//GEN-LAST:event_jButton_salirActionPerformed
 
+    
+    private void jLabel1_logo_ulpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1_logo_ulpMouseClicked
+        // en vez boton volver al escritotio usaremos el logo para mostrar el escritorio
+        mostrarEscritorio();
+         
+         
+   
+    }//GEN-LAST:event_jLabel1_logo_ulpMouseClicked
+
+    private void mostrarEscritorio() {
+         jPanel_desktop.removeAll();
+        ImageIcon icon = new ImageIcon(getClass().getResource("/universidadgrupo8/vistas/img/Ventana_Portada.png"));
+        Image image = icon.getImage();
+        jD_desktop = new JDesktopPane() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        jD_desktop.setSize(jPanel_desktop.getWidth(), jPanel_desktop.getHeight());
+        jD_desktop.setVisible(true);
+        jPanel_desktop.add(jD_desktop);
+            //  jD_desktop   activo en el jPanel_desktop
+        jPanel_desktop.setComponentZOrder(jD_desktop, 0);
+        jPanel_desktop.revalidate();
+        jPanel_desktop.repaint();
+    }
+/*
     public void volverAlEscritorio() {
         jD_desktop.removeAll();
-       // jD_desktop.add(jPanel_desktop, BorderLayout.CENTER);
-         jD_desktop.setVisible(true);
+        // jD_desktop.add(jPanel_desktop, BorderLayout.CENTER);
+        jD_desktop.setVisible(true);
         //jD_desktop.revalidate();
         jD_desktop.repaint();
-}
-
-
+    }
+*/
+    
+    
     public static void main(String args[]) {
 
         try {

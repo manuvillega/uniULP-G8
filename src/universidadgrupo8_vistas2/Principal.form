@@ -126,6 +126,9 @@
                   <Image iconType="3" name="/universidadgrupo8/vistas/img/logo-ulp.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel1_logo_ulpMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton_materia">
               <Properties>
