@@ -1,11 +1,17 @@
 package universidadgrupo8_vistas2;
 
+import javax.swing.JOptionPane;
+import universidadgrupo8.accesoADatos.MateriaData;
+import universidadgrupo8.entidades.Materia;
+
 /**
  *
  * @author Gonz@_
  */
 public class MateriaPanel extends javax.swing.JPanel {
-
+       
+        
+        private MateriaData materiaData;
     /**
      * Creates new form MateriaPanel
      */
@@ -31,14 +37,14 @@ public class MateriaPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        JTCodigo = new javax.swing.JTextField();
+        JTNombre = new javax.swing.JTextField();
+        JTAño = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton_alumno_buscar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        JBBuscar = new javax.swing.JButton();
+        JBNuevo = new javax.swing.JButton();
+        JBEliminar = new javax.swing.JButton();
+        JBGuardar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(25, 23, 38));
         setForeground(new java.awt.Color(25, 23, 38));
@@ -88,34 +94,54 @@ public class MateriaPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton_alumno_buscar.setBackground(new java.awt.Color(18, 29, 64));
-        jButton_alumno_buscar.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jButton_alumno_buscar.setForeground(new java.awt.Color(204, 204, 204));
-        jButton_alumno_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo8/vistas/img/lupa.png"))); // NOI18N
-        jButton_alumno_buscar.setText("Buscar ");
-        jButton_alumno_buscar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton_alumno_buscar.setPreferredSize(new java.awt.Dimension(120, 40));
+        JBBuscar.setBackground(new java.awt.Color(18, 29, 64));
+        JBBuscar.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        JBBuscar.setForeground(new java.awt.Color(204, 204, 204));
+        JBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/universidadgrupo8/vistas/img/lupa.png"))); // NOI18N
+        JBBuscar.setText("Buscar ");
+        JBBuscar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        JBBuscar.setPreferredSize(new java.awt.Dimension(120, 40));
+        JBBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBBuscarActionPerformed(evt);
+            }
+        });
 
-        jButton1.setBackground(new java.awt.Color(18, 29, 64));
-        jButton1.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(204, 204, 204));
-        jButton1.setText("Nuevo");
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton1.setPreferredSize(new java.awt.Dimension(120, 40));
+        JBNuevo.setBackground(new java.awt.Color(18, 29, 64));
+        JBNuevo.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        JBNuevo.setForeground(new java.awt.Color(204, 204, 204));
+        JBNuevo.setText("Nuevo");
+        JBNuevo.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        JBNuevo.setPreferredSize(new java.awt.Dimension(120, 40));
+        JBNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBNuevoActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(18, 29, 64));
-        jButton2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(204, 204, 204));
-        jButton2.setText("Eliminar");
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton2.setPreferredSize(new java.awt.Dimension(120, 40));
+        JBEliminar.setBackground(new java.awt.Color(18, 29, 64));
+        JBEliminar.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        JBEliminar.setForeground(new java.awt.Color(204, 204, 204));
+        JBEliminar.setText("Eliminar");
+        JBEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        JBEliminar.setPreferredSize(new java.awt.Dimension(120, 40));
+        JBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBEliminarActionPerformed(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(18, 29, 64));
-        jButton3.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(204, 204, 204));
-        jButton3.setText("Guardar");
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton3.setPreferredSize(new java.awt.Dimension(120, 40));
+        JBGuardar.setBackground(new java.awt.Color(18, 29, 64));
+        JBGuardar.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        JBGuardar.setForeground(new java.awt.Color(204, 204, 204));
+        JBGuardar.setText("Guardar");
+        JBGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        JBGuardar.setPreferredSize(new java.awt.Dimension(120, 40));
+        JBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel_fondo_alumnoLayout = new javax.swing.GroupLayout(jPanel_fondo_alumno);
         jPanel_fondo_alumno.setLayout(jPanel_fondo_alumnoLayout);
@@ -133,9 +159,9 @@ public class MateriaPanel extends javax.swing.JPanel {
                 .addGroup(jPanel_fondo_alumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_fondo_alumnoLayout.createSequentialGroup()
                         .addGap(98, 98, 98)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JBNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(175, 175, 175)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(JBEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(177, 177, 177))
                     .addGroup(jPanel_fondo_alumnoLayout.createSequentialGroup()
                         .addGap(140, 140, 140)
@@ -148,14 +174,14 @@ public class MateriaPanel extends javax.swing.JPanel {
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(60, 60, 60)
                         .addGroup(jPanel_fondo_alumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3)
+                            .addComponent(JTAño)
                             .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField1))
+                            .addComponent(JTNombre)
+                            .addComponent(JTCodigo))
                         .addGap(90, 90, 90)))
                 .addGroup(jPanel_fondo_alumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton_alumno_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(JBBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JBGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(92, 92, 92))
         );
         jPanel_fondo_alumnoLayout.setVerticalGroup(
@@ -168,16 +194,16 @@ public class MateriaPanel extends javax.swing.JPanel {
                 .addGap(9, 9, 9)
                 .addGroup(jPanel_fondo_alumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_alumno_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel_fondo_alumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel_fondo_alumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTAño, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel_fondo_alumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_fondo_alumnoLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
@@ -187,9 +213,9 @@ public class MateriaPanel extends javax.swing.JPanel {
                         .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(110, 110, 110)
                 .addGroup(jPanel_fondo_alumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(JBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jTabbedPane_Alumno.addTab("Formulario Materia", jPanel_fondo_alumno);
@@ -225,12 +251,65 @@ public class MateriaPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
+    private void JBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGuardarActionPerformed
+         String nombre = JTNombre.getText();
+         String añoTxt = JTAño.getText();
+         int anioMateria = 0;
+         try{
+             anioMateria = Integer.parseInt(añoTxt);
+         } catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "El año debe contener solo números.");
+         }
+         if(!nombre.matches("^[a-zA-Z]+$")){
+             JOptionPane.showMessageDialog(this, "El nombre debe contener solo letras.");
+         }
+         
+         boolean activo = jRadioButton1.isSelected();
+         
+         Materia materia = new Materia(nombre, anioMateria, activo);
+         
+         materiaData.guardarMateria(materia);
+         
+    }//GEN-LAST:event_JBGuardarActionPerformed
+
+    private void JBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBEliminarActionPerformed
+        int idmateriaEliminar = Integer.parseInt(JTCodigo.getText());
+        Materia materiaEliminar = materiaData.getMateriaPorId(idmateriaEliminar);
+        
+        if(materiaEliminar != null){
+            materiaData.eliminarMateria(materiaEliminar.getIdMateria());
+            jRadioButton1.setSelected(false);
+        } else{
+            JOptionPane.showMessageDialog(this, "Materia Inexistente.");
+        }
+    }//GEN-LAST:event_JBEliminarActionPerformed
+
+    private void JBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBNuevoActionPerformed
+        JTAño.setText("");
+        JTCodigo.setText("");
+        JTNombre.setText("");
+        jRadioButton1.setSelected(false);
+    }//GEN-LAST:event_JBNuevoActionPerformed
+
+    private void JBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBBuscarActionPerformed
+       int codigoB = Integer.parseInt(JTCodigo.getText());
+       
+       Materia materia = materiaData.getMateriaPorId(codigoB);
+       
+       if(materia != null){
+           JTCodigo.set
+       }
+    }//GEN-LAST:event_JBBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton jButton1;
-    public javax.swing.JButton jButton2;
-    public javax.swing.JButton jButton3;
-    public javax.swing.JButton jButton_alumno_buscar;
+    public javax.swing.JButton JBBuscar;
+    public javax.swing.JButton JBEliminar;
+    public javax.swing.JButton JBGuardar;
+    public javax.swing.JButton JBNuevo;
+    public javax.swing.JTextField JTAño;
+    public javax.swing.JTextField JTCodigo;
+    public javax.swing.JTextField JTNombre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -241,8 +320,5 @@ public class MateriaPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JSeparator jSeparator1;
     public javax.swing.JTabbedPane jTabbedPane_Alumno;
-    public javax.swing.JTextField jTextField1;
-    public javax.swing.JTextField jTextField2;
-    public javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

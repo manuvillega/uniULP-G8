@@ -266,15 +266,15 @@ public class AlumnoPanel extends javax.swing.JPanel {
 
     private void btn_alumno_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alumno_guardarActionPerformed
         //guardar y/o actualizar - obtenemos los datos de los campos de texto
-        String documentoTexto = txt_alumno_documento.getText();
+       // String documentoTexto = txt_alumno_documento.getText();
         // validar  DNI  solo números
-        int dni;
-        try {
+        int dni = Integer.parseInt(txt_alumno_documento.getText());
+        /*try {
              dni = Integer.parseInt(documentoTexto);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El DNI debe contener solo números.");
             return; // para la ejecución si  DNI no es  número
-        }
+        }*/
 
         
         
@@ -283,18 +283,19 @@ public class AlumnoPanel extends javax.swing.JPanel {
         String nombre = txt_alumno_nommbre.getText();
         
                 // valida  nombre y apellido 
-        if (!apellido.matches("^[a-zA-Z]+$") || !nombre.matches("^[a-zA-Z]+$")) {
+        /*if (!apellido.matches("^[a-zA-Z]+$") || !nombre.matches("^[a-zA-Z]+$")) {
             JOptionPane.showMessageDialog(this, "El apellido y nombre deben contener solo letras.");
             return; // para la ejecución si el apellido o el nombre no son solo letras
-        }
+        }*/
                 
                   
              // Guardar el alumno en la base de datos
-        alumnoData.guardarAlumno(alumno);
-        //LocalDate fechaNac = calendario_alumno_fechaNacim.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        LocalDate fechaNac = calendario_alumno_fechaNacim.getDate() != null
+        //alumnoData.guardarAlumno(alumno);
+        LocalDate fechaNac = calendario_alumno_fechaNacim.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        /*LocalDate fechaNac = calendario_alumno_fechaNacim.getDate() != null
                 ? calendario_alumno_fechaNacim.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
                 : null;       //si el campo de te fecha es diferente a nuloo vacio que lo convierta en un local date sino es nulo /validacion
+        */
         boolean estado = check_alumno_estado.isSelected();
         /*  EXPLICACION LINEA 'FECHANAC'
         getDate()  es la fecha seleccionada en el campode del calendario     
