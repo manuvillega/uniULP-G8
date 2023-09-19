@@ -13,9 +13,10 @@ import universidadgrupo8.entidades.Alumno;
  * @author Gonz@_
  */
 public class AlumnoPanel extends javax.swing.JPanel {
+
     private Connection con = null;
     private AlumnoData alumnoData;
-    Alumno alumno; 
+    Alumno alumno;
     private final Principal principal;
 
     /**
@@ -24,13 +25,13 @@ public class AlumnoPanel extends javax.swing.JPanel {
      * @param principal
      */
     public AlumnoPanel(Principal principal) {
-        con = Conexion.getconexion();   
+        con = Conexion.getconexion();
         this.principal = principal;
         initComponents();
 
         alumnoData = new AlumnoData();
         alumno = new Alumno();
-        
+
     }
 
     /**
@@ -265,11 +266,36 @@ public class AlumnoPanel extends javax.swing.JPanel {
 
     private void btn_alumno_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alumno_guardarActionPerformed
         //guardar y/o actualizar - obtenemos los datos de los campos de texto
-        int dni = Integer.parseInt(txt_alumno_documento.getText());  //el campo de texto nos devuelve un texto y lo covertimos a int
+        String documentoTexto = txt_alumno_documento.getText();
+        // validar  DNI  solo números
+        int dni;
+        try {
+             dni = Integer.parseInt(documentoTexto);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El DNI debe contener solo números.");
+            return; // para la ejecución si  DNI no es  número
+        }
+
+        
+        
+                // obtiene la data de los campos de texto
         String apellido = txt_alumno_apellido.getText();
         String nombre = txt_alumno_nommbre.getText();
-        LocalDate fechaNac = calendario_alumno_fechaNacim.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-         boolean estado = check_alumno_estado.isSelected(); 
+        
+                // valida  nombre y apellido 
+        if (!apellido.matches("^[a-zA-Z]+$") || !nombre.matches("^[a-zA-Z]+$")) {
+            JOptionPane.showMessageDialog(this, "El apellido y nombre deben contener solo letras.");
+            return; // para la ejecución si el apellido o el nombre no son solo letras
+        }
+                
+                  
+             // Guardar el alumno en la base de datos
+        alumnoData.guardarAlumno(alumno);
+        //LocalDate fechaNac = calendario_alumno_fechaNacim.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaNac = calendario_alumno_fechaNacim.getDate() != null
+                ? calendario_alumno_fechaNacim.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+                : null;       //si el campo de te fecha es diferente a nuloo vacio que lo convierta en un local date sino es nulo /validacion
+        boolean estado = check_alumno_estado.isSelected();
         /*  EXPLICACION LINEA 'FECHANAC'
         getDate()  es la fecha seleccionada en el campode del calendario     
         toInstant() es un instante en el tiempo 
@@ -277,18 +303,18 @@ public class AlumnoPanel extends javax.swing.JPanel {
         ZoneId.systemDefault() devuelve la zona horaria nuestra.
         toLocalDate() convierte a la fecha año/ mes/día 
          */
+
         
         //creamos nuevo alumno
-       Alumno alumno = new Alumno(dni, apellido, nombre, fechaNac, true);
+        Alumno alumno = new Alumno(dni, apellido, nombre, fechaNac, true);
 
-       // Guardar el alumno en la base de datos
-        alumnoData.guardarAlumno(alumno);
+        // Guardar el alumno en la base de datos
+        alumnoData.guardarAlumno(alumno); //Metodo clse Alumnodata
     }//GEN-LAST:event_btn_alumno_guardarActionPerformed
 
-    
-            //BOTON NUEVO
+    //BOTON NUEVO
     private void btn_alumno_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alumno_nuevoActionPerformed
-            //supongamos que nuevo sugnifica limpiar los campos de textos para ingresar los datos del alumno
+        //supongamos que nuevo sugnifica limpiar los campos de textos para ingresar los datos del alumno
         txt_alumno_documento.setText("");
         txt_alumno_apellido.setText("");
         txt_alumno_nommbre.setText("");
@@ -296,16 +322,15 @@ public class AlumnoPanel extends javax.swing.JPanel {
         check_alumno_estado.setSelected(false);
     }//GEN-LAST:event_btn_alumno_nuevoActionPerformed
 
-    
-            //BOTON ELIMINAR
+    //BOTON ELIMINAR
     private void btn_alumno_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alumno_eliminarActionPerformed
-                // obtenemos un el DNI del campo de texto
+        // obtenemos un el DNI del campo de texto
         int dniAlumnoInput = Integer.parseInt(txt_alumno_documento.getText());
-        
-                // obtenido el DNI, buscamos el ID
+
+        // obtenido el DNI, buscamos el ID
         Alumno idAlumnoinput = alumnoData.buscarAlumnoPorDni(dniAlumnoInput);
-        
-                //validamos campos nulos
+
+        //validamos campos nulos
         if (idAlumnoinput != null) {
             alumnoData.eliminarAlumno(idAlumnoinput.getIdAlumno());
             check_alumno_estado.setSelected(false);
@@ -313,19 +338,18 @@ public class AlumnoPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Alumno Inexistente.");
         }
     }//GEN-LAST:event_btn_alumno_eliminarActionPerformed
-  
-    
-            //BOTON BUSCAR
+
+    //BOTON BUSCAR
     private void btn_alumno_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alumno_buscarActionPerformed
-            // obtenermos del campo de texto, convertimos a un int  y gurdamos el DNI del alumno a buscar 
+        // obtenermos del campo de texto, convertimos a un int  y gurdamos el DNI del alumno a buscar 
         int dniBuscar = Integer.parseInt(txt_alumno_documento.getText());
 
-            // buscamos y guardamos al alumno por DNI
+        // buscamos y guardamos al alumno por DNI
         Alumno alumnoEncontrado = alumnoData.buscarAlumnoPorDni(dniBuscar);
 
-            // se   verificar si se encontró el alumno
+        // se   verificar si se encontró el alumno
         if (alumnoEncontrado != null) {
-             // mostramos los datos del alumno en los campos de texto
+            // mostramos los datos del alumno en los campos de texto
             txt_alumno_apellido.setText(alumnoEncontrado.getApellido());
             txt_alumno_nommbre.setText(alumnoEncontrado.getNombre());
             calendario_alumno_fechaNacim.setDate(java.sql.Date.valueOf(alumnoEncontrado.getFechaNac()));
