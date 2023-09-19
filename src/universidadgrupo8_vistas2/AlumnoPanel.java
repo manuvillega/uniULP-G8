@@ -290,7 +290,7 @@ public class AlumnoPanel extends javax.swing.JPanel {
                 
                   
              // Guardar el alumno en la base de datos
-        alumnoData.guardarAlumno(alumno);
+        //alumnoData.guardarAlumno(alumno);
         LocalDate fechaNac = calendario_alumno_fechaNacim.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         /*LocalDate fechaNac = calendario_alumno_fechaNacim.getDate() != null
                 ? calendario_alumno_fechaNacim.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
