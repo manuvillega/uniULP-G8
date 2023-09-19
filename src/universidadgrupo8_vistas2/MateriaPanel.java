@@ -17,6 +17,7 @@ public class MateriaPanel extends javax.swing.JPanel {
      */
     public MateriaPanel() {
         initComponents();
+        materiaData= new MateriaData();
     }
 
     /**
@@ -277,7 +278,7 @@ public class MateriaPanel extends javax.swing.JPanel {
         Materia materiaEliminar = materiaData.getMateriaPorId(idmateriaEliminar);
         
         if(materiaEliminar != null){
-            materiaData.eliminarMateria(materiaEliminar.getIdMateria());
+            
             jRadioButton1.setSelected(false);
         } else{
             JOptionPane.showMessageDialog(this, "Materia Inexistente.");
