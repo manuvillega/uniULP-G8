@@ -124,9 +124,9 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
-                                  <Component id="jButton1" max="32767" attributes="0"/>
+                                  <Component id="JBNuevo" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
-                                  <Component id="jButton2" max="32767" attributes="0"/>
+                                  <Component id="JBEliminar" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -143,17 +143,17 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextField3" max="32767" attributes="0"/>
+                                      <Component id="JTAño" max="32767" attributes="0"/>
                                       <Component id="jRadioButton1" max="32767" attributes="0"/>
-                                      <Component id="jTextField2" max="32767" attributes="0"/>
-                                      <Component id="jTextField1" max="32767" attributes="0"/>
+                                      <Component id="JTNombre" max="32767" attributes="0"/>
+                                      <Component id="JTCodigo" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="90" pref="90" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jButton_alumno_buscar" max="32767" attributes="0"/>
-                              <Component id="jButton3" max="32767" attributes="0"/>
+                              <Component id="JBBuscar" max="32767" attributes="0"/>
+                              <Component id="JBGuardar" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
                       </Group>
@@ -169,18 +169,18 @@
                           <EmptySpace min="9" pref="9" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField1" min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="jButton_alumno_buscar" min="-2" max="-2" attributes="0"/>
+                              <Component id="JTCodigo" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="JBBuscar" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField2" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="JTNombre" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="JTAño" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
@@ -194,9 +194,9 @@
                           </Group>
                           <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="JBEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="JBNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="JBGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -277,24 +277,24 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton1ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField1">
+                <Component class="javax.swing.JTextField" name="JTCodigo">
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField2">
+                <Component class="javax.swing.JTextField" name="JTNombre">
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField3">
+                <Component class="javax.swing.JTextField" name="JTA&#xf1;o">
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator1">
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton_alumno_buscar">
+                <Component class="javax.swing.JButton" name="JBBuscar">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="40" green="1d" red="12" type="rgb"/>
@@ -314,11 +314,14 @@
                       <Dimension value="[120, 40]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBBuscarActionPerformed"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton1">
+                <Component class="javax.swing.JButton" name="JBNuevo">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="40" green="1d" red="12" type="rgb"/>
@@ -335,11 +338,14 @@
                       <Dimension value="[120, 40]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBNuevoActionPerformed"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton2">
+                <Component class="javax.swing.JButton" name="JBEliminar">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="40" green="1d" red="12" type="rgb"/>
@@ -356,11 +362,14 @@
                       <Dimension value="[120, 40]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBEliminarActionPerformed"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton3">
+                <Component class="javax.swing.JButton" name="JBGuardar">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="40" green="1d" red="12" type="rgb"/>
@@ -377,6 +386,9 @@
                       <Dimension value="[120, 40]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBGuardarActionPerformed"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
