@@ -151,8 +151,9 @@ public class AdministracionPanel extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("Selecciones un Alumno:");
 
-        jRadioButton1.setBackground(new java.awt.Color(204, 204, 204));
+        jRadioButton1.setBackground(new java.awt.Color(7, 6, 30));
         jRadioButton1.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jRadioButton1.setForeground(new java.awt.Color(204, 204, 204));
         jRadioButton1.setText("Materias No inscriptas");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,8 +181,9 @@ public class AdministracionPanel extends javax.swing.JPanel {
         jComboBox_inscripciones_alumnos.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jComboBox_inscripciones_alumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alumnos" }));
 
-        jRadioButton2.setBackground(new java.awt.Color(204, 204, 204));
+        jRadioButton2.setBackground(new java.awt.Color(7, 6, 30));
         jRadioButton2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jRadioButton2.setForeground(new java.awt.Color(204, 204, 204));
         jRadioButton2.setText("Materias inscriptas");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

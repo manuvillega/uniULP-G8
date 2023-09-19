@@ -57,6 +57,7 @@ public class Principal extends javax.swing.JFrame {
         };
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Proyecto Transversal Grupo 8");
         setMinimumSize(new java.awt.Dimension(1093, 581));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
