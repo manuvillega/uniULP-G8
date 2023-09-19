@@ -297,8 +297,12 @@ public class MateriaPanel extends javax.swing.JPanel {
        Materia materia = materiaData.getMateriaPorId(codigoB);
        
        if(materia != null){
-           JTCodigo.set
-       }
+           JTNombre.setText(materia.getNombre());
+           JTAño.setText(Integer.toString(materia.getAnioMateria()));
+           jRadioButton1.setSelected(materia.isActivo());
+       }else {
+            JOptionPane.showMessageDialog(this, "Materia no encontrada");
+        }
     }//GEN-LAST:event_JBBuscarActionPerformed
 
 
