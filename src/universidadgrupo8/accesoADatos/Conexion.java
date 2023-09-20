@@ -15,21 +15,15 @@ public class Conexion {
     private static final String PASS = "";
     private static Connection connection;
     
-    //conexion para prueba gonza
-   /* private static final String URL = "jdbc:mysql://localhost:3306/universidadulp?zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&useTimezone=true&serverTimezone=UTC";
-    private static final String USUARIO = "gonza";
-    private static final String PASS = "Metallica.1";
-    */
-    
-    
-    private Conexion (){}
+
+       private Conexion (){}
     
     
     public static Connection getconexion(){
         
         if(connection == null){
             try {
-                Class.forName("org.mariadb.jdbc.Driver");
+                Class.forName("org.mariadb.jdbc.Driver");               
                 //Class.forName("com.mysql.cj.jdbc.Driver");
                 connection = DriverManager.getConnection(URL+DB, USUARIO, PASS);
               //conexion para prueba gonza
