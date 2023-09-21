@@ -258,6 +258,11 @@ public class MateriaPanel extends javax.swing.JPanel {
         Materia materiaB = materiaData.getMateriaPorId(codigoB); 
         
         if(materiaB != null){
+            
+           materiaB.setNombre(JTNombre.getText());
+           materiaB.setAnioMateria(Integer.parseInt(JTAño.getText()));
+           materiaB.setActivo(jRadioButton1.isSelected());    
+            
             materiaData.modificarMateria(materiaB);
         } else{
         String nombre = JTNombre.getText();
