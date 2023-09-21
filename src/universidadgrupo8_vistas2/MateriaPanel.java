@@ -252,7 +252,14 @@ public class MateriaPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void JBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGuardarActionPerformed
-         String nombre = JTNombre.getText();
+        int codigoB = Integer.parseInt(JTCodigo.getText());
+       
+        Materia materiaB = materiaData.getMateriaPorId(codigoB); 
+        
+        if(materiaB != null){
+            materiaData.modificarMateria(materiaB);
+        } else{
+        String nombre = JTNombre.getText();
          String añoTxt = JTAño.getText();
          int anioMateria = 0;
          try{
@@ -269,7 +276,7 @@ public class MateriaPanel extends javax.swing.JPanel {
          Materia materia = new Materia(nombre, anioMateria, activo);
          
          materiaData.guardarMateria(materia);
-         
+        }
     }//GEN-LAST:event_JBGuardarActionPerformed
 
     private void JBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBEliminarActionPerformed
@@ -279,6 +286,7 @@ public class MateriaPanel extends javax.swing.JPanel {
         if(materiaEliminar != null){
             materiaData.eliminarMateria(materiaEliminar.getIdMateria());
             jRadioButton1.setSelected(false);
+            materiaData.eliminarMateria(idmateriaEliminar);
         } else{
             JOptionPane.showMessageDialog(this, "Materia Inexistente.");
         }
