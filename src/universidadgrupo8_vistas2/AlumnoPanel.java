@@ -265,38 +265,30 @@ public class AlumnoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_check_alumno_estadoActionPerformed
 
     private void btn_alumno_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alumno_guardarActionPerformed
-        //guardar y/o actualizar - obtenemos los datos de los campos de texto
-       // String documentoTexto = txt_alumno_documento.getText();
-        // validar  DNI  solo números
-        int dni = Integer.parseInt(txt_alumno_documento.getText());
-        /*try {
-             dni = Integer.parseInt(documentoTexto);
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "El DNI debe contener solo números.");
-            return; // para la ejecución si  DNI no es  número
-        }*/
+     // Validar campos
+    if (!validarCampos()) {
+        return;
+    }
 
-        
-        
+        //guardar y/o actualizar - obtenemos los datos de los campos de texto
+        String documentoTexto = txt_alumno_documento.getText().trim();
+       int dni = 0;
+                                
                 // obtiene la data de los campos de texto
         String apellido = txt_alumno_apellido.getText();
-        String nombre = txt_alumno_nommbre.getText();
-        
+        String nombre = txt_alumno_nommbre.getText();        
                 // valida  nombre y apellido 
-        /*if (!apellido.matches("^[a-zA-Z]+$") || !nombre.matches("^[a-zA-Z]+$")) {
-            JOptionPane.showMessageDialog(this, "El apellido y nombre deben contener solo letras.");
+        if (!apellido.matches("^[a-zA-Z]+$") || !nombre.matches("^[a-zA-Z]+$")) {
+            JOptionPane.showMessageDialog(this, "El apellido y nombre deben contener solo Letras! ⚠️");
             return; // para la ejecución si el apellido o el nombre no son solo letras
-        }*/
+        }
                 
                   
              // Guardar el alumno en la base de datos
-        //alumnoData.guardarAlumno(alumno);
-        LocalDate fechaNac = calendario_alumno_fechaNacim.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        /*LocalDate fechaNac = calendario_alumno_fechaNacim.getDate() != null
-                ? calendario_alumno_fechaNacim.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+        // LocalDate fechaNac = calendario_alumno_fechaNacim.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaNac = calendario_alumno_fechaNacim.getDate() != null?
+                 calendario_alumno_fechaNacim.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
                 : null;       //si el campo de te fecha es diferente a nuloo vacio que lo convierta en un local date sino es nulo /validacion
-        */
-        boolean estado = check_alumno_estado.isSelected();
         /*  EXPLICACION LINEA 'FECHANAC'
         getDate()  es la fecha seleccionada en el campode del calendario     
         toInstant() es un instante en el tiempo 
@@ -305,9 +297,10 @@ public class AlumnoPanel extends javax.swing.JPanel {
         toLocalDate() convierte a la fecha año/ mes/día 
          */
 
-        
+          boolean estado = check_alumno_estado.isSelected();
+         validarCampos();
         //creamos nuevo alumno
-        Alumno alumno = new Alumno(dni, apellido, nombre, fechaNac, true);
+        Alumno alumno = new Alumno(dni, apellido, nombre, fechaNac, estado);
 
         // Guardar el alumno en la base de datos
         alumnoData.guardarAlumno(alumno); //Metodo clse Alumnodata
@@ -325,6 +318,9 @@ public class AlumnoPanel extends javax.swing.JPanel {
 
     //BOTON ELIMINAR
     private void btn_alumno_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alumno_eliminarActionPerformed
+          if (!validarCampos()) {
+        return;
+        }
         // obtenemos un el DNI del campo de texto
         int dniAlumnoInput = Integer.parseInt(txt_alumno_documento.getText());
 
@@ -336,12 +332,15 @@ public class AlumnoPanel extends javax.swing.JPanel {
             alumnoData.eliminarAlumno(idAlumnoinput.getIdAlumno());
             check_alumno_estado.setSelected(false);
         } else {
-            JOptionPane.showMessageDialog(this, "Alumno Inexistente.");
+            JOptionPane.showMessageDialog(this, "Alumno Inexistente! ⚠️" );
         }
     }//GEN-LAST:event_btn_alumno_eliminarActionPerformed
 
     //BOTON BUSCAR
     private void btn_alumno_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alumno_buscarActionPerformed
+          if (!validarCampos()) {
+        return;
+        }
         // obtenermos del campo de texto, convertimos a un int  y gurdamos el DNI del alumno a buscar 
         int dniBuscar = Integer.parseInt(txt_alumno_documento.getText());
 
@@ -356,10 +355,48 @@ public class AlumnoPanel extends javax.swing.JPanel {
             calendario_alumno_fechaNacim.setDate(java.sql.Date.valueOf(alumnoEncontrado.getFechaNac()));
             check_alumno_estado.setSelected(alumnoEncontrado.isActivo()); //si esta o no activo el Check
         } else {
-            JOptionPane.showMessageDialog(this, "Alumno no encontrado");
+            JOptionPane.showMessageDialog(this, "Alumno no encontrado! ⚠️");
         }
     }//GEN-LAST:event_btn_alumno_buscarActionPerformed
 
+    private boolean validarCampos() {
+    // DNI
+    String dniTexto = txt_alumno_documento.getText().trim();
+    if (dniTexto.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "El campo DNI está Nacío! ⚠️");
+        return false;
+    }
+
+    try {
+        int dni = Integer.parseInt(dniTexto);
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "El DNI debe  ser solo Números! ⚠️");
+        return false;
+    }
+
+    // nombre
+    String nombre = txt_alumno_nommbre.getText().trim();
+    if (nombre.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "El campo Nombre está Vacío! ⚠️");
+        return false;
+    }
+
+    //apellido
+    String apellido = txt_alumno_apellido.getText().trim();
+    if (apellido.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "El campo Apellido está Vacío! ⚠️");
+        return false;
+    }
+
+    // fecha  nac
+    if (calendario_alumno_fechaNacim.getDate() == null) {
+        JOptionPane.showMessageDialog(this, "La fecha de Nacimiento no está Seleccionada! ⚠️");
+        return false;
+    }
+
+    return true;
+}
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn_alumno_buscar;

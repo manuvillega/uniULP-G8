@@ -36,7 +36,11 @@ public class ConsultasPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(25, 23, 38));
         setMinimumSize(new java.awt.Dimension(912, 505));
 
-        jTabbedPane_Alumno.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel_bg_materias.setBackground(new java.awt.Color(7, 6, 30));
+
+        jPanel1.setBackground(new java.awt.Color(7, 6, 30));
+
+        jTabbedPane_Alumno.setBackground(new java.awt.Color(7, 6, 30));
         jTabbedPane_Alumno.setForeground(new java.awt.Color(7, 6, 30));
         jTabbedPane_Alumno.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
 
