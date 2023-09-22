@@ -265,45 +265,42 @@ public class AlumnoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_check_alumno_estadoActionPerformed
 
     private void btn_alumno_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alumno_guardarActionPerformed
-     // Validar campos
-    //if (!validarCampos()) {
-        //return;
-    //}
 
-        //guardar y/o actualizar - obtenemos los datos de los campos de texto
-        String documentoTexto = txt_alumno_documento.getText().trim();
-       int dni = 0;
-                                
-                // obtiene la data de los campos de texto
-        String apellido = txt_alumno_apellido.getText();
-        String nombre = txt_alumno_nommbre.getText();        
-                // valida  nombre y apellido 
-        if (!apellido.matches("^[a-zA-Z]+$") || !nombre.matches("^[a-zA-Z]+$")) {
-            JOptionPane.showMessageDialog(this, "El apellido y nombre deben contener solo Letras! ⚠️");
-            return; // para la ejecución si el apellido o el nombre no son solo letras
-        }
-                
-                  
-             // Guardar el alumno en la base de datos
-        // LocalDate fechaNac = calendario_alumno_fechaNacim.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        LocalDate fechaNac = calendario_alumno_fechaNacim.getDate() != null?
-                 calendario_alumno_fechaNacim.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
-                : null;       //si el campo de te fecha es diferente a nuloo vacio que lo convierta en un local date sino es nulo /validacion
-        /*  EXPLICACION LINEA 'FECHANAC'
-        getDate()  es la fecha seleccionada en el campode del calendario     
-        toInstant() es un instante en el tiempo 
-        atZone() convierte el Instant a la misma fecha y hora, pero de una zona horaria que nos encontremos. 
-        ZoneId.systemDefault() devuelve la zona horaria nuestra.
-        toLocalDate() convierte a la fecha año/ mes/día 
-         */
+         int dni;
+    try {
+        dni = Integer.parseInt(txt_alumno_documento.getText().trim());
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "El documento deben ser solo un números .", "", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
-          boolean estado = check_alumno_estado.isSelected();
-         //validarCampos();
-        //creamos nuevo alumno
-        Alumno alumno = new Alumno(dni, apellido, nombre, fechaNac, estado);
+    String apellido = txt_alumno_apellido.getText().trim();
+    String nombre = txt_alumno_nommbre.getText().trim();
+    LocalDate fechaNac = calendario_alumno_fechaNacim.getDate() != null ?
+            calendario_alumno_fechaNacim.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate() :
+            null;
+    boolean estado = check_alumno_estado.isSelected();
 
-        // Guardar el alumno en la base de datos
-        alumnoData.guardarAlumno(alumno); //Metodo clse Alumnodata
+    if (apellido.isEmpty() || nombre.isEmpty() || fechaNac == null) {
+        JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios. Por favor, complete todos los datos.", "s", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Validar que el apellido y nombre contengan solo letras y espacios
+    if (!apellido.matches("^[a-zA-Z]+( [a-zA-Z]+)*$") || !nombre.matches("^[a-zA-Z]+( [a-zA-Z]+)*$")) {
+        JOptionPane.showMessageDialog(this, "El apellido y nombre deben ser solo letras!.", "", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    Alumno alumno = new Alumno(dni, apellido, nombre, fechaNac, estado);
+
+    if (alumno.getIdAlumno() != 0) {
+        alumnoData.modificarAlumno(alumno);
+        JOptionPane.showMessageDialog(this, "Alumno modificado!.");
+    } else {
+        alumnoData.guardarAlumno(alumno);
+        JOptionPane.showMessageDialog(this, "Alumno agregado!.");
+    }
     }//GEN-LAST:event_btn_alumno_guardarActionPerformed
 
     //BOTON NUEVO
@@ -318,9 +315,7 @@ public class AlumnoPanel extends javax.swing.JPanel {
 
     //BOTON ELIMINAR
     private void btn_alumno_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alumno_eliminarActionPerformed
-          /*if (!validarCampos()) {
-        return;
-        }*/
+
         // obtenemos un el DNI del campo de texto
         int dniAlumnoInput = Integer.parseInt(txt_alumno_documento.getText());
 
@@ -338,9 +333,7 @@ public class AlumnoPanel extends javax.swing.JPanel {
 
     //BOTON BUSCAR
     private void btn_alumno_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alumno_buscarActionPerformed
-          /*if (!validarCampos()) {
-        return;
-        }*/
+
         // obtenermos del campo de texto, convertimos a un int  y gurdamos el DNI del alumno a buscar 
         int dniBuscar = Integer.parseInt(txt_alumno_documento.getText());
 
@@ -395,8 +388,9 @@ public class AlumnoPanel extends javax.swing.JPanel {
     }
 
     return true;
+
 }
-   */
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn_alumno_buscar;
