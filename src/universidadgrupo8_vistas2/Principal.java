@@ -367,7 +367,7 @@ public class Principal extends javax.swing.JFrame {
     
     public static void main(String args[]) {
 
-         /*try {
+         try {
             UIManager.setLookAndFeel(new McWinLookAndFeel());
         } catch (UnsupportedLookAndFeelException ex) {
             ex.printStackTrace();
@@ -376,7 +376,7 @@ public class Principal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> {
             Principal principal = new Principal();  // misma intancia
             principal.setVisible(true);
-        });*/
+        });
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
