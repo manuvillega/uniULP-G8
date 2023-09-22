@@ -265,7 +265,7 @@ public class MateriaPanel extends javax.swing.JPanel {
             
             materiaData.modificarMateria(materiaB);
         } else{
-        String nombre = JTNombre.getText();
+         String nombre = JTNombre.getText();
          String añoTxt = JTAño.getText();
          int anioMateria = 0;
          try{
@@ -279,9 +279,10 @@ public class MateriaPanel extends javax.swing.JPanel {
          
          boolean activo = jRadioButton1.isSelected();
          
-         Materia materia = new Materia(nombre, anioMateria, activo);
-         
-         materiaData.guardarMateria(materia);
+         materiaB.setNombre(nombre);
+         materiaB.setActivo(activo);
+         materiaB.setAnioMateria(anioMateria);
+         materiaData.guardarMateria(materiaB);
         }
     }//GEN-LAST:event_JBGuardarActionPerformed
 
