@@ -1,5 +1,6 @@
 package universidadgrupo8_vistas2;
 
+import com.jtattoo.plaf.mcwin.McWinLookAndFeel;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Graphics;
@@ -9,6 +10,8 @@ import javax.swing.JDesktopPane;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -361,19 +364,19 @@ public class Principal extends javax.swing.JFrame {
         jPanel_desktop.revalidate();
         jPanel_desktop.repaint();
     }
-/*
-    public void volverAlEscritorio() {
-        jD_desktop.removeAll();
-        // jD_desktop.add(jPanel_desktop, BorderLayout.CENTER);
-        jD_desktop.setVisible(true);
-        //jD_desktop.revalidate();
-        jD_desktop.repaint();
-    }
-*/
-    
     
     public static void main(String args[]) {
 
+         /*try {
+            UIManager.setLookAndFeel(new McWinLookAndFeel());
+        } catch (UnsupportedLookAndFeelException ex) {
+            ex.printStackTrace();
+        }
+        // crea e inicializa el  principal
+        java.awt.EventQueue.invokeLater(() -> {
+            Principal principal = new Principal();  // misma intancia
+            principal.setVisible(true);
+        });*/
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
