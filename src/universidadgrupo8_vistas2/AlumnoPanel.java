@@ -266,9 +266,9 @@ public class AlumnoPanel extends javax.swing.JPanel {
 
     private void btn_alumno_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alumno_guardarActionPerformed
      // Validar campos
-    if (!validarCampos()) {
-        return;
-    }
+    //if (!validarCampos()) {
+        //return;
+    //}
 
         //guardar y/o actualizar - obtenemos los datos de los campos de texto
         String documentoTexto = txt_alumno_documento.getText().trim();
@@ -298,7 +298,7 @@ public class AlumnoPanel extends javax.swing.JPanel {
          */
 
           boolean estado = check_alumno_estado.isSelected();
-         validarCampos();
+         //validarCampos();
         //creamos nuevo alumno
         Alumno alumno = new Alumno(dni, apellido, nombre, fechaNac, estado);
 
@@ -318,9 +318,9 @@ public class AlumnoPanel extends javax.swing.JPanel {
 
     //BOTON ELIMINAR
     private void btn_alumno_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alumno_eliminarActionPerformed
-          if (!validarCampos()) {
+          /*if (!validarCampos()) {
         return;
-        }
+        }*/
         // obtenemos un el DNI del campo de texto
         int dniAlumnoInput = Integer.parseInt(txt_alumno_documento.getText());
 
@@ -338,9 +338,9 @@ public class AlumnoPanel extends javax.swing.JPanel {
 
     //BOTON BUSCAR
     private void btn_alumno_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alumno_buscarActionPerformed
-          if (!validarCampos()) {
+          /*if (!validarCampos()) {
         return;
-        }
+        }*/
         // obtenermos del campo de texto, convertimos a un int  y gurdamos el DNI del alumno a buscar 
         int dniBuscar = Integer.parseInt(txt_alumno_documento.getText());
 
@@ -359,7 +359,7 @@ public class AlumnoPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btn_alumno_buscarActionPerformed
 
-    private boolean validarCampos() {
+    /*private boolean validarCampos() {
     // DNI
     String dniTexto = txt_alumno_documento.getText().trim();
     if (dniTexto.isEmpty()) {
@@ -396,7 +396,7 @@ public class AlumnoPanel extends javax.swing.JPanel {
 
     return true;
 }
-   
+   */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn_alumno_buscar;
