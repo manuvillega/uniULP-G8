@@ -253,19 +253,9 @@ public class MateriaPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void JBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGuardarActionPerformed
-        int codigoB = Integer.parseInt(JTCodigo.getText());
-       
-        Materia materiaB = materiaData.getMateriaPorId(codigoB); 
-        
-        if(materiaB != null){
-            
-           materiaB.setNombre(JTNombre.getText());
-           materiaB.setAnioMateria(Integer.parseInt(JTAño.getText()));
-           materiaB.setActivo(jRadioButton1.isSelected());    
-            
-            materiaData.modificarMateria(materiaB);
-        } else{
-        String nombre = JTNombre.getText();
+        if(JTCodigo.getText().isEmpty()){
+         Materia materia = new Materia();
+         String nombre = JTNombre.getText();
          String añoTxt = JTAño.getText();
          int anioMateria = 0;
          try{
@@ -279,9 +269,26 @@ public class MateriaPanel extends javax.swing.JPanel {
          
          boolean activo = jRadioButton1.isSelected();
          
-         Materia materia = new Materia(nombre, anioMateria, activo);
-         
+         materia.setNombre(nombre);
+         materia.setActivo(activo);
+         materia.setAnioMateria(anioMateria);
          materiaData.guardarMateria(materia);
+        }
+        else{  
+         int codigoB = Integer.parseInt(JTCodigo.getText());
+        
+        Materia materiaB = materiaData.getMateriaPorId(codigoB); 
+        
+        if(materiaB != null){
+            
+           materiaB.setNombre(JTNombre.getText());
+           materiaB.setAnioMateria(Integer.parseInt(JTAño.getText()));
+           materiaB.setActivo(jRadioButton1.isSelected());    
+            
+            materiaData.modificarMateria(materiaB);
+        } else{
+            JOptionPane.showMessageDialog(this, "Materia inexistente, no se puede modificar.");
+        } 
         }
     }//GEN-LAST:event_JBGuardarActionPerformed
 
