@@ -340,9 +340,6 @@ public class Principal extends javax.swing.JFrame {
     private void jLabel1_logo_ulpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1_logo_ulpMouseClicked
         // en vez boton volver al escritotio usaremos el logo para mostrar el escritorio
         mostrarEscritorio();
-         
-         
-   
     }//GEN-LAST:event_jLabel1_logo_ulpMouseClicked
 
     private void mostrarEscritorio() {
@@ -377,7 +374,7 @@ public class Principal extends javax.swing.JFrame {
             Principal principal = new Principal();  // misma intancia
             principal.setVisible(true);
         });
-        try {
+       /* try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -396,11 +393,11 @@ public class Principal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+       /* java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal().setVisible(true);
             }
-        });
+        });*/
     }
 
 
