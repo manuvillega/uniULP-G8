@@ -5,6 +5,8 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JLayeredPane;
@@ -364,10 +366,10 @@ public class Principal extends javax.swing.JFrame {
     
     public static void main(String args[]) {
 
-         try {
+        try {
             UIManager.setLookAndFeel(new McWinLookAndFeel());
         } catch (UnsupportedLookAndFeelException ex) {
-            ex.printStackTrace();
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
         // crea e inicializa el  principal
         java.awt.EventQueue.invokeLater(() -> {

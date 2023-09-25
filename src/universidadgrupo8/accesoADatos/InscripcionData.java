@@ -213,7 +213,7 @@ public class InscripcionData {
                 alumno.setDni(rs.getInt("dni"));
                 alumno.setIdAlumno(rs.getInt("idAlumno"));
                 Date fecha = rs.getDate("fechaNacimiento");
-                alumno.setFechaNac(fecha.toLocalDate());
+                alumno.setFechaNacimiento(fecha.toLocalDate());
                 alumnos.add(alumno);
             }
             ps.close();

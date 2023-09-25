@@ -1,16 +1,38 @@
 package universidadgrupo8_vistas2;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import universidadgrupo8.accesoADatos.Conexion;
+import universidadgrupo8.accesoADatos.InscripcionData;
+import universidadgrupo8.accesoADatos.MateriaData;
+import universidadgrupo8.entidades.Alumno;
+import universidadgrupo8.entidades.Inscripcion;
+import universidadgrupo8.entidades.Materia;
+import java.util.List;
+
 /**
  *
  * @author Gonz@_
  */
 public class AdministracionPanel extends javax.swing.JPanel {
-
+      private DefaultTableModel modelo = new DefaultTableModel();
+      private Connection con = null;
+      private InscripcionData inscripcionData;
+      
     /**
      * Creates new form AdministraacionPanel
      */
     public AdministracionPanel() {
         initComponents();
+        con = Conexion.getconexion();
+        inscripcionData = new InscripcionData();
+        agregarAlumnos();
+        cabecera();
     }
 
     /**
@@ -43,7 +65,7 @@ public class AdministracionPanel extends javax.swing.JPanel {
         jRadioButton2 = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableManejoInsc = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(25, 23, 38));
         setMinimumSize(new java.awt.Dimension(912, 500));
@@ -180,6 +202,11 @@ public class AdministracionPanel extends javax.swing.JPanel {
 
         jComboBox_inscripciones_alumnos.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jComboBox_inscripciones_alumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alumnos" }));
+        jComboBox_inscripciones_alumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_inscripciones_alumnosActionPerformed(evt);
+            }
+        });
 
         jRadioButton2.setBackground(new java.awt.Color(7, 6, 30));
         jRadioButton2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
@@ -197,7 +224,7 @@ public class AdministracionPanel extends javax.swing.JPanel {
         jLabel2.setText("Listado de Materias");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableManejoInsc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -205,7 +232,7 @@ public class AdministracionPanel extends javax.swing.JPanel {
                 "ID", "Nombre", "Año"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableManejoInsc);
 
         javax.swing.GroupLayout jPanel_fondo_alumnoLayout = new javax.swing.GroupLayout(jPanel_fondo_alumno);
         jPanel_fondo_alumno.setLayout(jPanel_fondo_alumnoLayout);
@@ -223,7 +250,7 @@ public class AdministracionPanel extends javax.swing.JPanel {
                         .addGap(67, 67, 67))
                     .addGroup(jPanel_fondo_alumnoLayout.createSequentialGroup()
                         .addGap(192, 192, 192)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(88, 88, 88)
                         .addComponent(jComboBox_inscripciones_alumnos, 0, 255, Short.MAX_VALUE)
                         .addGap(133, 133, 133))
@@ -312,6 +339,14 @@ public class AdministracionPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jComboBox_inscripciones_alumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_inscripciones_alumnosActionPerformed
+        borrarFilas();
+        
+        for(Inscripcion insc:inscripcionData.obtenerInscripciones()){
+            Alumno alumn = insc.getAlumno();
+        }
+    }//GEN-LAST:event_jComboBox_inscripciones_alumnosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButton1;
@@ -334,7 +369,44 @@ public class AdministracionPanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
     public javax.swing.JTabbedPane jTabbedPane_Alumno;
-    public javax.swing.JTable jTable1;
     public javax.swing.JTable jTable2;
+    public javax.swing.JTable jTableManejoInsc;
     // End of variables declaration//GEN-END:variables
+
+ private void cabecera(){
+     modelo.addColumn("ID");
+     modelo.addColumn("Nombre");
+     modelo.addColumn("Año");
+     jTableManejoInsc.setModel(modelo);
+     
+ } 
+    
+    
+private void borrarFilas(){
+        int f=jTableManejoInsc.getRowCount()-1;
+        for(;f>=0; f--){
+            modelo.removeRow(f);
+        }
+    }
+
+private void agregarAlumnos(){
+   String sql = "SELECT * FROM alumno WHERE estado=1";                      
+        try {    
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()){
+              String nombre = rs.getString("nombre");
+              String apellido = rs.getString("apellido");
+              int dni = rs.getInt("dni");
+              jComboBox_inscripciones_alumnos.addItem(dni+" "+apellido+" "+nombre);
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "error al acceder a la tabla alumno"+ex);
+        }
+    }
+
 }
