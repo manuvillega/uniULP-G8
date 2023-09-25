@@ -8,26 +8,28 @@ public class Alumno {
     private int dni;
     private String apellido;
     private String nombre;
-    private LocalDate fechaNac;
+    //private LocalDate fechaNac; 
+    private LocalDate fechaNacimiento; //Nombre que figura en la base de datos es fechaNacimiento
+    
     private boolean activo; 
 
     public Alumno() {
     }
 
-    public Alumno(int dni, String apellido, String nombre, LocalDate fechaNac, boolean activo) {
+    public Alumno(int dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean activo) {
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
-        this.fechaNac = fechaNac;
+        this.fechaNacimiento = fechaNacimiento;
         this.activo = activo;
     }
 
-    public Alumno(int idAlumno, int dni, String apellido, String nombre, LocalDate fechaNac, boolean activo) {
+    public Alumno(int idAlumno, int dni, String apellido, String nombre, LocalDate fechaNacimiento, boolean activo) {
         this.idAlumno = idAlumno;
         this.dni = dni;
         this.apellido = apellido;
         this.nombre = nombre;
-        this.fechaNac = fechaNac;
+        this.fechaNacimiento = fechaNacimiento;
         this.activo = activo;
     }
 
@@ -63,13 +65,15 @@ public class Alumno {
         this.nombre = nombre;
     }
 
-    public LocalDate getFechaNac() {
-        return fechaNac;
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setFechaNac(LocalDate fechaNac) {
-        this.fechaNac = fechaNac;
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
+
+
 
     public boolean isActivo() {
         return activo;
@@ -79,10 +83,16 @@ public class Alumno {
         this.activo = activo;
     }
 
+//    @Override
+//    public String toString() {
+//        return "Alumno{" + "idAlumno=" + idAlumno + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + '}';
+//    }
+    
+            //Version Corregida 
     @Override
     public String toString() {
-        return "Alumno{" + "idAlumno=" + idAlumno + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + '}';
+        return "Alumno{" + "idAlumno=" + idAlumno + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + ", activo=" + activo + '}';
     }
 
-  
+    
 }
