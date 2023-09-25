@@ -9,8 +9,6 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import universidadgrupo8.entidades.Alumno;
 
@@ -33,7 +31,7 @@ public class AlumnoData {
             ps.setInt(1, alumno.getDni());              // metodos set. para cargar datos en la tabla 
             ps.setString(2, alumno.getApellido());
             ps.setString(3, alumno.getNombre());
-            ps.setDate(4, Date.valueOf(alumno.getFechaNac()));
+            ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));
             ps.setBoolean(5, alumno.isActivo());  //el metodo get de atributos boolean, es (is)                           
             ps.executeUpdate();
             //aqui devuelve la clave generada para el alumno
@@ -41,28 +39,28 @@ public class AlumnoData {
             // rs es una matriz de una fila y una columna, por eso no utilizo while (es un solo alumno)
             if (rs.next()) {
 
-                alumno.setIdAlumno(rs.getInt(1)); //aqui le asignamos el keys como Id, se lo paso por rs.getInt(1) por ser un entero 
+                //alumno.setIdAlumno(rs.getInt(1)); //aqui le asignamos el keys como Id, se lo paso por rs.getInt(1) por ser un entero 
+                alumno.setIdAlumno(rs.getInt("idAlumno"));
                 //y le paso el numero de columna donde estan los Id.
                 JOptionPane.showMessageDialog(null, "Alumno agregado");
             }
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno" + ex.getMessage());
         }
     }
 
-    public void modificarAlumno(Alumno alumno) {
+    /*public void modificarAlumno(Alumno alumno) {
 
-        String sql = "UPDATE alumno SET dni=?, apellido=?, nombre=?, fechaNacimiento=?"
-                + "WHERE IdAlumno=?";
+        String sql = "UPDATE alumno SET dni=?, apellido=?, nombre=?, fechaNacimiento=? WHERE IdAlumno=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, alumno.getDni());
             ps.setString(2, alumno.getApellido());
             ps.setString(3, alumno.getNombre());
-            ps.setDate(4, Date.valueOf(alumno.getFechaNac()));
+            ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));
             ps.setInt(5, alumno.getIdAlumno());
 
             int exito = ps.executeUpdate();
@@ -71,10 +69,40 @@ public class AlumnoData {
             }
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "error al acceder a tabla alumno");
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "error al acceder a tabla alumno" );
+        }
+      
+        }*/
+    
+     //version alternativa
+    public void modificarAlumno(Alumno alumno) {
+
+        String sql = "UPDATE alumno SET dni=?, apellido=?, nombre=?, fechaNacimiento=? WHERE IdAlumno=?";
+        PreparedStatement ps = null;
+
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, alumno.getDni());
+            ps.setString(2, alumno.getApellido());
+            ps.setString(3, alumno.getNombre());
+            ps.setDate(4, Date.valueOf(alumno.getFechaNacimiento()));
+            ps.setInt(5, alumno.getIdAlumno());
+            int exito = ps.executeUpdate();
+
+            if (exito == 1) {
+                JOptionPane.showMessageDialog(null, "Alumno modificado");
+            } else {
+                JOptionPane.showMessageDialog(null, "El alumno no existe");
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno: " + ex.getMessage());
         }
 
     }
+
 
     /*public void eliminarAlumno(int Id){
          try {
@@ -90,9 +118,7 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null, "error al acceder a la tabla alumno");  
         }                
     } */
-
-    
-            //version corregida!
+    //version corregida!
     public void eliminarAlumno(int id) {
 
         try {
@@ -128,7 +154,7 @@ public class AlumnoData {
                 alumno.setDni(rs.getInt("dni"));
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
-                alumno.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
+                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setActivo(true);
 
             } else {
@@ -159,7 +185,7 @@ public class AlumnoData {
                 alumno.setDni(rs.getInt("dni"));
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
-                alumno.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
+                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setActivo(true);
 
             } else {
@@ -191,7 +217,7 @@ public class AlumnoData {
                 alumno.setDni(rs.getInt("dni"));
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
-                alumno.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
+                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setActivo(true);
 
                 alumnos.add(alumno);
@@ -217,9 +243,9 @@ public class AlumnoData {
                 int dni = rs.getInt("dni");
                 String apellido = rs.getString("apellido");
                 String nombre = rs.getString("nombre");
-                LocalDate fechaNac = rs.getDate("fechaNacimiento").toLocalDate();
+                LocalDate fechaNacimiento = rs.getDate("fechaNacimiento").toLocalDate();
                 boolean activo = rs.getBoolean("estado");
-                alumno = new Alumno(idAlumno, dni, apellido, nombre, fechaNac, activo);
+                alumno = new Alumno(idAlumno, dni, apellido, nombre, fechaNacimiento, activo);
             }
 
             ps.close();
