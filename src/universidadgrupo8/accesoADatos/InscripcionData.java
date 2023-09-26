@@ -107,10 +107,9 @@ public class InscripcionData {
     public List<Materia> obtenerMateriasCursadas(int id){
         List<Materia> materias = new ArrayList<Materia>();
         try {
-        String sql = "SELECT m.nombre, m.anio, m.estado\n" +
-                        "FROM materia AS m\n" +
-                        "INNER JOIN inscripcion AS i ON m.idMateria = i.idMateria\n" +
-                        "WHERE i.idAlumno = ?;";
+        String sql = "SELECT m.nombre, m.anio, m.estado, m.idMateria FROM materia AS m\n" +
+                    "INNER JOIN inscripcion AS i ON m.idMateria = i.idMateria\n" +
+                    "WHERE i.idAlumno = ?";
                 
         
             PreparedStatement ps = con.prepareStatement(sql);
@@ -136,10 +135,10 @@ public class InscripcionData {
      public List<Materia> obtenerMateriasNoCursadas(int id){
         List<Materia> materias = new ArrayList<Materia>();
         try {
-        String sql = "SELECT m.nombre, m.anio, m.estado\n" +
-                        "FROM materia AS m\n" +
-                        "INNER JOIN inscripcion AS i ON m.idMateria != i.idMateria\n" +
-                        "WHERE i.idAlumno = ?;";
+        String sql = "SELECT m.nombre, m.anio, m.estado, m.idMateria\n" +
+                     "FROM materia AS m\n" +
+                     "INNER JOIN inscripcion AS i ON m.idMateria != i.idMateria\n" +
+                     "WHERE i.idAlumno = ?";
                 
         
             PreparedStatement ps = con.prepareStatement(sql);

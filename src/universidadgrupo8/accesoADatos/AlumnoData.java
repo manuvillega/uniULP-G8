@@ -196,6 +196,7 @@ public class AlumnoData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "error al acceder a la tabla alumno");
         }
+        
         return alumno;
     }
 
