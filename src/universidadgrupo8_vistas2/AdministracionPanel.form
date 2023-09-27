@@ -53,7 +53,11 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jTabbedPane_Alumno" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jTabbedPane_Alumno" pref="892" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -100,7 +104,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="340" max="-2" attributes="0"/>
-                          <Component id="jLabel5" pref="227" max="32767" attributes="0"/>
+                          <Component id="jLabel5" pref="207" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="340" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -113,13 +117,13 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
-                                          <Component id="jSeparator3" pref="682" max="32767" attributes="0"/>
+                                          <Component id="jSeparator3" pref="653" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="-2" pref="199" max="-2" attributes="0"/>
-                                          <Component id="jLabel7" pref="200" max="32767" attributes="0"/>
+                                          <Component id="jLabel7" pref="186" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-                                          <Component id="jComboBoxCargaNotas" pref="246" max="32767" attributes="0"/>
+                                          <Component id="jComboBoxCargaNotas" pref="231" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -284,19 +288,19 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="289" max="-2" attributes="0"/>
-                                  <Component id="jLabel1" pref="324" max="32767" attributes="0"/>
+                                  <Component id="jLabel1" pref="304" max="32767" attributes="0"/>
                                   <EmptySpace min="225" pref="225" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
-                                  <Component id="jSeparator1" pref="661" max="32767" attributes="0"/>
+                                  <Component id="jSeparator1" pref="632" max="32767" attributes="0"/>
                                   <EmptySpace min="67" pref="67" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
                                   <Component id="jLabel3" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-                                  <Component id="jComboBox_inscripciones_alumnos" pref="255" max="32767" attributes="0"/>
+                                  <Component id="jComboBox_inscripciones_alumnos" pref="226" max="32767" attributes="0"/>
                                   <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -304,12 +308,12 @@
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
-                                          <Component id="jButton1" pref="133" max="32767" attributes="0"/>
+                                          <Component id="jBInscribir" pref="120" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
-                                          <Component id="jButton2" pref="190" max="32767" attributes="0"/>
+                                          <Component id="jBAnularInsc" pref="177" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jScrollPane1" pref="778" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane1" pref="749" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -322,9 +326,9 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
-                          <Component id="jRBMateriasInsc" pref="190" max="32767" attributes="0"/>
+                          <Component id="jRBMateriasInsc" pref="175" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="289" max="-2" attributes="0"/>
-                          <Component id="jRBMateriasNoInsc" pref="190" max="32767" attributes="0"/>
+                          <Component id="jRBMateriasNoInsc" pref="176" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -352,8 +356,8 @@
                           <Component id="jScrollPane1" min="-2" pref="168" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="jButton1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="jBAnularInsc" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="jBInscribir" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -404,7 +408,7 @@
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator1">
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton1">
+                <Component class="javax.swing.JButton" name="jBInscribir">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="40" green="1d" red="12" type="rgb"/>
@@ -419,13 +423,13 @@
                     <Property name="horizontalTextPosition" type="int" value="2"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBInscribirActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton2">
+                <Component class="javax.swing.JButton" name="jBAnularInsc">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="40" green="1d" red="12" type="rgb"/>
@@ -439,6 +443,9 @@
                     <Property name="text" type="java.lang.String" value="Anular Inscripcion"/>
                     <Property name="horizontalTextPosition" type="int" value="2"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBAnularInscActionPerformed"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
