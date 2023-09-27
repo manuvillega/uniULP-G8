@@ -1,16 +1,39 @@
 package universidadgrupo8_vistas2;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JFrame;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+import universidadgrupo8.accesoADatos.MateriaData;
+import universidadgrupo8.entidades.Alumno;
+import universidadgrupo8.entidades.Materia;
+
 /**
  *
  * @author Gon@_
  */
 public class ConsultasPanel extends javax.swing.JPanel {
-
-    /**
-     * Creates new form ConsultasPanel
+ private DefaultTableModel modelo;
+ private MateriaData materia;   /**
+* Creates new form ConsultasPanel
      */
+ //private jTable2 Tabla;
     public ConsultasPanel() {
         initComponents();
+        modelo=(DefaultTableModel)jTable2.getModel();
+        materia = new MateriaData();
+        materia.listarMateria().forEach(m->jComboBox_inscripciones_alumnos2.addItem(m.getNombre()));
+       
     }
 
     /**
@@ -58,6 +81,15 @@ public class ConsultasPanel extends javax.swing.JPanel {
 
         jComboBox_inscripciones_alumnos2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jComboBox_inscripciones_alumnos2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Materias" }));
+        jComboBox_inscripciones_alumnos2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                jComboBox_inscripciones_alumnos2PopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -87,7 +119,7 @@ public class ConsultasPanel extends javax.swing.JPanel {
                     .addGroup(jPanel_fondo_alumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel_fondo_alumnoLayout.createSequentialGroup()
                             .addGap(129, 129, 129)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 179, Short.MAX_VALUE)
                             .addGap(88, 88, 88)
                             .addComponent(jComboBox_inscripciones_alumnos2, 0, 255, Short.MAX_VALUE)
                             .addGap(127, 127, 127))
@@ -159,6 +191,41 @@ public class ConsultasPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jComboBox_inscripciones_alumnos2PopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBox_inscripciones_alumnos2PopupMenuWillBecomeInvisible
+        // TODO add your handling code here:JFrame frame = new JFrame("Tabla desde BD");
+     
+    jTable2 tabla = new jTable2(modelo);
+    jTable2.setModel(modelo);
+    JPopupMenu popupMenu = new JPopupMenu();
+    Iterable<String> listaDeMaterias = null;
+
+// Agrega elementos al menú emergente (opciones de materias, por ejemplo)
+    for (String materia : listaDeMaterias) {
+    JMenuItem menuItem = new JMenuItem(materia);
+    menuItem.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // Aquí debes manejar el evento y cargar los datos de los alumnos de la materia seleccionada
+            String materiaSeleccionada = materia;
+            // Luego, llama a un método para cargar los datos de los alumnos desde la base de datos
+           // cargarDatosDeAlumnos(materiaSeleccionada);
+        }
+
+        /*@Override
+        public void actionPerformed(ActionEvent ae) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }*/
+
+        private void cargarDatosDeAlumnos(String materiaSeleccionada) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+    });
+    popupMenu.add(menuItem);
+}
+
+table.setComponentPopupMenu(popupMenu);
+    
+    }//GEN-LAST:event_jComboBox_inscripciones_alumnos2PopupMenuWillBecomeInvisible
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox_inscripciones_alumnos2;
@@ -172,4 +239,6 @@ public class ConsultasPanel extends javax.swing.JPanel {
     public javax.swing.JTabbedPane jTabbedPane_Alumno;
     public javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
+
+
 }
