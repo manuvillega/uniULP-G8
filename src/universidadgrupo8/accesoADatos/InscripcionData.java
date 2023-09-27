@@ -32,13 +32,22 @@ public class InscripcionData {
                 + " VALUES(?, ?, ?)";
         
         try {
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, insc.getIdAlumno());
             ps.setInt(2, insc.getIDMateria());
             ps.setInt(3, 1);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de inscripcion");
+         int filasAfectadas = ps.executeUpdate();
+        
+        if (filasAfectadas > 0) {
+            JOptionPane.showMessageDialog(null, "Inscripción guardada exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo guardar la inscripción");
         }
+
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de inscripcion: " + ex.getMessage());
+    }
     }
     public List<Inscripcion> obtenerInscripciones(){
         List<Inscripcion> insc = new ArrayList<Inscripcion>();
@@ -109,7 +118,7 @@ public class InscripcionData {
         try {
         String sql = "SELECT m.nombre, m.anio, m.estado, m.idMateria FROM materia AS m\n" +
                     "INNER JOIN inscripcion AS i ON m.idMateria = i.idMateria\n" +
-                    "WHERE i.idAlumno = ?";
+                    "WHERE i.idAlumno = ? AND i.estado = 1";
                 
         
             PreparedStatement ps = con.prepareStatement(sql);
@@ -136,13 +145,14 @@ public class InscripcionData {
         List<Materia> materias = new ArrayList<Materia>();
         try {
         String sql = "SELECT m.nombre, m.anio, m.estado, m.idMateria\n" +
-                     "FROM materia AS m\n" +
-                     "INNER JOIN inscripcion AS i ON m.idMateria != i.idMateria\n" +
-                     "WHERE i.idAlumno = ?";
+                    "FROM materia AS m\n" +
+                    "LEFT JOIN inscripcion AS i ON m.idMateria = i.idMateria AND i.idAlumno = ?\n" +
+                    "WHERE i.idMateria IS NULL OR (i.estado = 0 AND i.idAlumno = ?)";
                 
         
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
+            ps.setInt(2, id);
             ResultSet rs = ps.executeQuery();
             Materia materia;
             while(rs.next()){
@@ -162,19 +172,28 @@ public class InscripcionData {
     }
      
      
-     void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
+     public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
          try{
-          String sql = "DELETE FROM `inscripcion` "
+          String sql = "UPDATE inscripcion SET estado= 0 "
                   + "WHERE idAlumno = ? AND idMateria = ?";
           PreparedStatement ps = con.prepareStatement(sql);
           ps.setInt(1, idAlumno);
           ps.setInt(2, idMateria);
-         }
-         catch (SQLException ex){
-             JOptionPane.showMessageDialog(null, "Error al eliminar la inscripcion, revise que el id del alumno y de la materia sean correctos"+ex.getMessage());
-         }
-             
-     }
+         
+       int filasAfectadas = ps.executeUpdate();
+        
+        if (filasAfectadas > 0) {
+            JOptionPane.showMessageDialog(null, "Inscripción borrada exitosamente");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo borrar la inscripción");
+        }
+
+        ps.close();
+         }catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla de inscripcion: " + ex.getMessage());
+    }
+}
+
      
      
      void actualizarNota(int idAlumno, int idMateria, double nota){

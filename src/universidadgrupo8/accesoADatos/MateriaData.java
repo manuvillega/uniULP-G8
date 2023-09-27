@@ -116,7 +116,7 @@ public class MateriaData {
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, Id);
-            int exito = ps.executeUpdate(sql);
+            int exito = ps.executeUpdate();
             if (exito==1){
                 JOptionPane.showMessageDialog(null, "Materia eliminada");
             }                        
