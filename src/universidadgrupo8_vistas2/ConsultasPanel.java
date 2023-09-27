@@ -2,18 +2,11 @@ package universidadgrupo8_vistas2;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.swing.JFrame;
+import java.util.List;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
-import javax.swing.JScrollPane;
-import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import universidadgrupo8.accesoADatos.InscripcionData;
 import universidadgrupo8.accesoADatos.MateriaData;
 import universidadgrupo8.entidades.Alumno;
 import universidadgrupo8.entidades.Materia;
@@ -24,7 +17,8 @@ import universidadgrupo8.entidades.Materia;
  */
 public class ConsultasPanel extends javax.swing.JPanel {
  private DefaultTableModel modelo;
- private MateriaData materia;   /**
+ private MateriaData materia;
+ private InscripcionData inscripcionData;/**
 * Creates new form ConsultasPanel
      */
  //private jTable2 Tabla;
@@ -32,7 +26,8 @@ public class ConsultasPanel extends javax.swing.JPanel {
         initComponents();
         modelo=(DefaultTableModel)jTable2.getModel();
         materia = new MateriaData();
-        materia.listarMateria().forEach(m->jComboBox_inscripciones_alumnos2.addItem(m.getNombre()));
+        inscripcionData = new InscripcionData();
+        materia.listarMateria().forEach(m->jComboBox_inscripciones_alumnos2.addItem(m.getIdMateria()+" "+m.getNombre()));
        
     }
 
@@ -88,6 +83,11 @@ public class ConsultasPanel extends javax.swing.JPanel {
                 jComboBox_inscripciones_alumnos2PopupMenuWillBecomeInvisible(evt);
             }
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+        jComboBox_inscripciones_alumnos2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_inscripciones_alumnos2ActionPerformed(evt);
             }
         });
 
@@ -192,40 +192,34 @@ public class ConsultasPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox_inscripciones_alumnos2PopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBox_inscripciones_alumnos2PopupMenuWillBecomeInvisible
-        // TODO add your handling code here:JFrame frame = new JFrame("Tabla desde BD");
-     
-    jTable2 tabla = new jTable2(modelo);
-    jTable2.setModel(modelo);
-    JPopupMenu popupMenu = new JPopupMenu();
-    Iterable<String> listaDeMaterias = null;
-
-// Agrega elementos al menú emergente (opciones de materias, por ejemplo)
-    for (String materia : listaDeMaterias) {
-    JMenuItem menuItem = new JMenuItem(materia);
-    menuItem.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            // Aquí debes manejar el evento y cargar los datos de los alumnos de la materia seleccionada
-            String materiaSeleccionada = materia;
-            // Luego, llama a un método para cargar los datos de los alumnos desde la base de datos
-           // cargarDatosDeAlumnos(materiaSeleccionada);
-        }
-
-        /*@Override
-        public void actionPerformed(ActionEvent ae) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }*/
-
-        private void cargarDatosDeAlumnos(String materiaSeleccionada) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-    });
-    popupMenu.add(menuItem);
-}
-
-table.setComponentPopupMenu(popupMenu);
-    
+       
     }//GEN-LAST:event_jComboBox_inscripciones_alumnos2PopupMenuWillBecomeInvisible
+
+    private void jComboBox_inscripciones_alumnos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_inscripciones_alumnos2ActionPerformed
+        String elementoSeleccionado = (String) jComboBox_inscripciones_alumnos2.getSelectedItem();
+        if(elementoSeleccionado != null){
+        int IDSeleccionado = obtenerIDSeleccionado(elementoSeleccionado);
+               if(IDSeleccionado != -1){
+                   List<Alumno> materiasCursadas = inscripcionData.obtenerAlumnosXMateria(IDSeleccionado);
+                   borrarFilas();
+                   for(Alumno alumn:materiasCursadas){
+                       if(!alumn.isActivo()){
+                           continue;
+                       } else{
+                        modelo.addRow(new Object[]{
+                        alumn.getIdAlumno(),
+                        alumn.getDni(),
+                        alumn.getApellido(),
+                        alumn.getNombre()
+                    });
+                       } 
+                   }
+                  
+            
+            
+        }
+        }
+    }//GEN-LAST:event_jComboBox_inscripciones_alumnos2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox_inscripciones_alumnos2;
@@ -240,5 +234,33 @@ table.setComponentPopupMenu(popupMenu);
     public javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 
+    
+    private void cabecera(){
+     modelo.addColumn("ID");
+     modelo.addColumn("DNI");
+     modelo.addColumn("Apellido");
+     modelo.addColumn("Nombre");
+     jTable2.setModel(modelo);
+     
+ } 
+    
+    
+private void borrarFilas(){
+    DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+    model.setRowCount(0);
+    }
+
+
+    private int obtenerIDSeleccionado(String elementoSeleccionado) {
+    String[] partes = elementoSeleccionado.split(" ");
+    if (partes.length > 0) {
+        try {
+            return Integer.parseInt(partes[0]);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+    }
+    return -1;
+}
 
 }

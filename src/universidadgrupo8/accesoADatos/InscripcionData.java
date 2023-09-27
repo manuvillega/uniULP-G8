@@ -214,11 +214,11 @@ public class InscripcionData {
     public List<Alumno> obtenerAlumnosXMateria(int idMateria){
         List<Alumno> alumnos = new ArrayList<Alumno>();
         try{
-            String sql = "SELECT a.dni, a.apellido, a.nombre, a.estado\n" +
+            String sql = "SELECT a.dni, a.apellido, a.nombre, a.idAlumno, a.estado\n" +
                          "FROM alumno AS a\n" +
                         "INNER JOIN inscripcion AS i ON a.idAlumno = i.idAlumno\n" +
                         "INNER JOIN materia AS m ON m.idMateria = i.idMateria\n" +
-                        "WHERE i.idMateria = ?";
+                        "WHERE i.idMateria = ? AND i.estado = 1";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idMateria);
             ResultSet rs = ps.executeQuery();
@@ -230,13 +230,11 @@ public class InscripcionData {
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setDni(rs.getInt("dni"));
                 alumno.setIdAlumno(rs.getInt("idAlumno"));
-                Date fecha = rs.getDate("fechaNacimiento");
-                alumno.setFechaNacimiento(fecha.toLocalDate());
                 alumnos.add(alumno);
             }
             ps.close();
         }catch(SQLException ex){
-            
+            JOptionPane.showMessageDialog(null, "Error al obtener alumno por materia"+ex.getMessage());
         }
         return alumnos;
     }
